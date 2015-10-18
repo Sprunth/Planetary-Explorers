@@ -28,7 +28,7 @@ namespace Planetary_Explorers
         /// Each contains a z-level for drawing
         /// Do not directly add to this list. Use AddItemToDraw
         /// </summary>
-        private readonly Dictionary<uint, List<Drawable>> toDraw;
+        protected Dictionary<uint, List<Drawable>> ToDraw { get; private set; }
 
 
         public delegate void LostFocusHandler(object sender, EventArgs e);
@@ -49,7 +49,7 @@ namespace Planetary_Explorers
         public DrawableBase(Vector2u displaySize)
         {
             toUpdate = new List<IUpdatable>();
-            toDraw = new Dictionary<uint, List<Drawable>>();
+            ToDraw = new Dictionary<uint, List<Drawable>>();
             
             _targetSpr = new Sprite();
 
@@ -72,7 +72,7 @@ namespace Planetary_Explorers
         public virtual void Draw(RenderTarget sourceTarget)
         {
             Target.Clear(BackgroundColor);
-            foreach (var tup in toDraw)
+            foreach (var tup in ToDraw)
             {
                 tup.Value.ForEach(drawable => Target.Draw(drawable));
             }
@@ -133,22 +133,22 @@ namespace Planetary_Explorers
         public void AddItemToDraw(Drawable drawable, uint zlevel)
         {
             var exists = false;
-            foreach (var tup in toDraw)
+            foreach (var tup in ToDraw)
             {
                 if (tup.Value.Contains(drawable))
                     exists = true;
             }
             if (exists)
                 return;
-            if (!toDraw.ContainsKey(zlevel))
-                toDraw.Add(zlevel, new List<Drawable>());
-            toDraw[zlevel].Add(drawable);
+            if (!ToDraw.ContainsKey(zlevel))
+                ToDraw.Add(zlevel, new List<Drawable>());
+            ToDraw[zlevel].Add(drawable);
         }
 
         public void RemoveItemToDraw(Drawable drawable, uint zlevel)
         {
             // Could be sped up with binary search, or keep an index.
-            toDraw[zlevel].Remove(drawable);
+            ToDraw[zlevel].Remove(drawable);
         }
 
         private void LostFocus(object sender, EventArgs e)

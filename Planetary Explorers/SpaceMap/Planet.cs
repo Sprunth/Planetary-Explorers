@@ -29,9 +29,10 @@ namespace Planetary_Explorers.SpaceMap
             {
                 Position = new Vector2f(1.1f*displaySize.X/2f, 1.1f*displaySize.Y/2f),
                 OutlineThickness = 3,
-                OutlineColor = new Color(20, 20, 20)
+                OutlineColor = new Color(20, 20, 20),
+                Origin = new Vector2f(displaySize.X / 2f, displaySize.Y / 2f)
             };
-            _planet.Origin = new Vector2f(displaySize.X / 2f, displaySize.Y / 2f);
+            
             //_planet.FillColor = SFML.Graphics.Color.Magenta;
             _planet.Texture = GeneratePlanetTexture(new Vector2u((uint)_planet.Radius, (uint)_planet.Radius));
 
@@ -40,8 +41,6 @@ namespace Planetary_Explorers.SpaceMap
             //_hoverText = new Label("Planet", FontManager.ActiveFontManager, new Vector2u(100, 40));
 
             OnMouseMove += Planet_OnMouseMove;
-
-            BackgroundColor = Color.Red;
         }
 
         void Planet_OnMouseMove(object sender, MouseMoveEventArgs e, Vector2f displayCoords)
