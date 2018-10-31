@@ -52,20 +52,9 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="libnoise">
-      <HintPath>..\..\..\..\..\..\..\vs13lib\libnoise-1706\NoiseLab\bin\Debug\libnoise.dll</HintPath>
-    </Reference>
-    <Reference Include="sfmlnet-audio-2">
-      <HintPath>..\..\..\..\..\..\..\vs13lib\SFML.Net-2.2\lib\sfmlnet-audio-2.dll</HintPath>
-    </Reference>
-    <Reference Include="sfmlnet-graphics-2">
-      <HintPath>..\..\..\..\..\..\..\vs13lib\SFML.Net-2.2\lib\sfmlnet-graphics-2.dll</HintPath>
-    </Reference>
-    <Reference Include="sfmlnet-system-2">
-      <HintPath>..\..\..\..\..\..\..\vs13lib\SFML.Net-2.2\lib\sfmlnet-system-2.dll</HintPath>
-    </Reference>
-    <Reference Include="sfmlnet-window-2">
-      <HintPath>..\..\..\..\..\..\..\vs13lib\SFML.Net-2.2\lib\sfmlnet-window-2.dll</HintPath>
+    <Reference Include="libnoise, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PlanetaryExplorers\Planetary Explorers\libnoise.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -91,6 +80,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Graphnode.SFML.Net">
+      <Version>2.4.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="libnoise.dll" />
+    <Content Include="libnoise.pdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

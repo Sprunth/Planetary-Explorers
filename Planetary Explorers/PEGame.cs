@@ -27,7 +27,9 @@ namespace Planetary_Explorers
 
         public void Initialize()
         {
-            Window = new RenderWindow(new VideoMode(Screensize.X, Screensize.Y), "Planetary Explorers", Styles.Close | Styles.Titlebar, new ContextSettings(32, 32, 8, 1, 0));
+            var contextSettings = new ContextSettings(32, 32, 8);
+
+            Window = new RenderWindow(new VideoMode(Screensize.X, Screensize.Y), "Planetary Explorers", Styles.Close | Styles.Titlebar, contextSettings);
 
             var spaceMap = new SpaceMap.SpaceMap(new Vector2u(80, 30), new Vector2u(400, 300));
 
